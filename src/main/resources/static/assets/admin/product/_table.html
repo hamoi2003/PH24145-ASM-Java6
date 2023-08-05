@@ -1,0 +1,44 @@
+<div class="card card-default">
+    <div class="card-header bg-success text-white">PRODUCT LIST</div>
+    <table class="table table-condensed">
+        <thead style="font-variant: small-caps;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Available?</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in pager.items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price | number :2}}</td>
+                <td>{{item.createDate|date:'dd-MM-yyyy'}}</td>
+                <td>
+                    <img  ng-src="/assets/images/{{item.image}}" style="width: 50px;height: 50px;" alt="">
+                </td>
+                <td>{{item.category.name}}</td>
+                <td>{{item.available?'yes' : 'No'}}</td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <button class="btn btn-warning" ng-click="edit(item)"><i class="bi bi-gear-fill"></i></button>
+                        <button class="btn btn-danger" ng-if="item.available == true" ng-click="delete(item)"><i class="bi bi-archive-fill"></i></button>
+                        <button class="btn btn-primary" ng-if="item.available == false" ng-click="delete(item)"><i class="bi bi-arrow-repeat"></i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-footer text-center">
+        <button ng-click="pager.first()" class="btn btn-danger"><<</button>
+        <button ng-click="pager.prev()" class="btn btn-primary">|<</button>
+        <button class="btn btn-success">{{pager.page + 1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn btn-primary">>|</button>
+        <button ng-click="pager.last()" class="btn btn-danger">>></button>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs container">
+    <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#orderStatusALL"><b>STATUS ORDER</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#pending"><b>PENDING</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#confirm"><b>CONFIRM</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#delivering"><b>DELIVERING</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#successfull"><b>SUCCESS</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#delete"><b>DELETED</b></a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container active" id="orderStatusALL">
+        <div ng-include="'/assets/admin/order/_orderStatusALL.html'"></div>
+    </div>
+    <div class="tab-pane container fade" id="pending">
+        <div ng-include="'/assets/admin/order/_pending.html'"></div>
+    </div>
+    <div class="tab-pane container fade" id="confirm">
+        <div ng-include="'/assets/admin/order/_confirm.html'"></div>
+    </div>
+    <div class="tab-pane container fade" id="delivering">
+        <div ng-include="'/assets/admin/order/_delivering.html'"></div>
+    </div>
+    <div class="tab-pane container fade" id="successfull">
+        <div ng-include="'/assets/admin/order/_successfull.html'"></div>
+    </div>
+    <div class="tab-pane container fade" id="delete">
+        <div ng-include="'/assets/admin/order/_delete.html'"></div>
+    </div>
+</div>
+</div>

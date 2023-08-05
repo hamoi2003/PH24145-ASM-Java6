@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+th:fragment="dynamic(main)">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--    Jquery-->
+    <script
+            src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/shopping-cart-app.css">
+	 <!--Sweet Alert -->
+	 <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+
+    <style>
+        .header {
+            position: relative;
+        }
+        
+        .runImg {
+            position: absolute;
+            top: 350px;
+            left: 500px;
+        }
+        
+        footer {
+            background-color: hsl(255, 80%, 36%);
+        }
+        
+        #navbar {
+            position: sticky;
+            position: -webkit-sticky;
+        }
+        
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .header {
+            position: relative;
+        }
+        
+        .carousel-run {
+            position: absolute;
+            bottom: 0%;
+            right: 0;
+            width: 50%;
+            height: 180px;
+        }
+        </style>
+</head>
+<body>
+    <div class="container-fluid p-0" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+        <header class="row"></header>
+        <nav class="row">
+            <div th:replace="/layout/_menu.html"></div>
+        </nav>
+        <div class="row mt-9 " style="padding: 35px;">
+            <article class="col-sm-9">
+                <main th:replace="${main}"></main>
+            </article>
+            <aside class="col-sm-3">
+                <div th:replace="/layout/_cart-info.html"></div>
+                <div th:replace="/layout/_category.html"></div>
+            </aside>
+        </div>
+        <!-- 						FOOTER 									 -->
+		<footer>
+			<div class="row p-5">
+				<div class="col-sm-4">
+					<p class="text-center">
+						<!-- <img src="./images/Fpoly_white.png" alt=""> -->
+					</p>
+					<div class="clearfix wrapper-social"
+						style="margin-top: 10px; display: flex; justify-content: center;">
+						<div class="pull-left" style="margin-right: 15px;">
+							<a href="https://www.facebook.com/fpt.poly" target="_blank"
+								rel="noopener noreferrer"><img
+								class="img-responsive lazyloaded"
+								src="https://caodang.fpt.edu.vn/wp-content/themes/poly-2015/images/ico-fb-landing.png"
+								data-ll-status="loaded">
+								<noscript>
+									<img class="img-responsive"
+										src="https://caodang.fpt.edu.vn/wp-content/themes/poly-2015/images/xico-fb-landing.png.pagespeed.ic.7wvYx5wg-6.webp" />
+								</noscript></a>
+						</div>
+						<div class="pull-left" style="margin-right: 15px;">
+							<a
+								href="https://www.youtube.com/channel/UCHXm-vzOfAuLucVBKDUfhvQ"
+								target="_blank" rel="noopener noreferrer"><img
+								class="img-responsive lazyloaded"
+								src="https://caodang.fpt.edu.vn/wp-content/themes/poly-2015/images/ico-youtube-landing.png"
+								data-ll-status="loaded">
+								<noscript>
+									<img class="img-responsive"
+										src="https://caodang.fpt.edu.vn/wp-content/themes/poly-2015/images/xico-youtube-landing.png.pagespeed.ic.1X68wukCQj.webp" />
+								</noscript> </a>
+						</div>
+						<div class="pull-left" style="margin-right: 15px;">
+							<a href="https://www.tiktok.com/@fptpolytechnic?lang=en"
+								target="_blank" rel="noopener noreferrer"><img
+								class="img-responsive lazyloaded"
+								src="https://caodang.fpt.edu.vn/wp-content/uploads/icon-tiktok.png"
+								data-ll-status="loaded">
+								<noscript>
+									<img class="img-responsive"
+										src="https://caodang.fpt.edu.vn/wp-content/uploads/xicon-tiktok.png.pagespeed.ic.vlzCpD1E6j.webp" />
+								</noscript> </a>
+						</div>
+						<div class="pull-left">
+							<a
+								href="http://vi.wikipedia.org/wiki/Tr%C6%B0%E1%BB%9Dng_Cao_%C4%91%E1%BA%B3ng_Th%E1%BB%B1c_h%C3%A0nh_FPT"
+								target="_blank" rel="noopener noreferrer"><img
+								class="img-responsive lazyloaded"
+								src="https://caodang.fpt.edu.vn/wp-content/themes/poly-2015/images/ico-wiki-landing.png"
+								data-ll-status="loaded">
+								<noscript>
+									<img class="img-responsive"
+										src="https://caodang.fpt.edu.vn/wp-content/themes/poly-2015/images/xico-wiki-landing.png.pagespeed.ic.aC7_ZAw9LQ.webp" />
+								</noscript> </a>
+						</div>
+					</div>
+					<div class="phone d-flex justify-content-center "
+						style="padding-top: 30px;">
+						<div class="title">
+							<p class="text-warning fs-3">
+								<b> THÔNG TIN LIÊN HỆ</b>
+							</p>
+							<p class="text-white fs-6">Điện Thoại : 0989898989</p>
+							<p class="text-white fs-6">Email: datnvph18618@fpt.edu.vn</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-8">
+					<h3 class="text-warning">HỆ THỐNG SHOP FPT</h3>
+
+					<div class="row">
+						<div class="col-sm-6 pt-3">
+							<div class="Hanoi text-white pb-3">
+								<p class="fs-4">
+									<u>Cơ sở Hà Nội</u>
+								</p>
+								<p>
+									<i class="bi bi-pin-map-fill text-warning"></i> Văn phòng tuyển
+									sinh: Toà nhà FPT Polytechnic , Phố Trịnh Văn Bô, phường Phương
+									Canh, quận Nam Từ Liêm, TP Hà Nội
+								</p>
+								<p>
+									<i class="bi bi-telephone-inbound-fill text-warning"></i>
+									0989898989
+								</p>
+							</div>
+							<div class="HaiPhong text-white">
+								<p class="fs-4">
+									<u>Cơ sở Hải Phòng</u>
+								</p>
+								<p>
+									<i class="bi bi-pin-map-fill text-warning"></i> Văn phòng tuyển
+									sinh: 271 Lê Thánh TÔng, phường Máy Chai, quận Ngô Quyền, TP
+									Hải Phòng
+								</p>
+								<p>
+									<i class="bi bi-telephone-inbound-fill text-warning"></i>
+									0989898989
+								</p>
+							</div>
+						</div>
+						<div class="col-sm-6 pt-3">
+							<div class="HCM text-white pb-3">
+								<p class="fs-4">
+									<u>Cơ sở Hồ Chí Minh</u>
+								</p>
+								<p>
+									<i class="bi bi-pin-map-fill text-warning"></i> Văn phòng tuyển
+									sinh: 778/B1 Nguyễn Kiệm, phường 4, quận Phú Nhuận, TP Hồ Chí
+									Minh
+								</p>
+								<p>
+									<i class="bi bi-telephone-inbound-fill text-warning"></i>
+									0989898989
+								</p>
+							</div>
+							<div class="TayNguyen text-white">
+								<p class="fs-4">
+									<u>Cơ sở Tây Nguyên</u>
+								</p>
+								<p>
+									<i class="bi bi-pin-map-fill text-warning"></i> Văn phòng tuyển
+									sinh: Tổ dân phố 8, phường Tân An, TP.Buoom Ma Thuật, Đắc Lắk
+								</p>
+								<p>
+									<i class="bi bi-telephone-inbound-fill text-warning"></i>
+									0989898989
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+        <script src="/assets/js/shopping-cart-app.js"></script>
+    </div>
+</body>
+</html>

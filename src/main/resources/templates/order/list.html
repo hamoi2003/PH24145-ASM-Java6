@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+    <body>
+        <main>
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    YOUR ORDERS PURCHASED
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Order No.</th>
+                            <th>Order Date</th>
+                            <th>Shipping Address</th>
+                            <th>Status</th>
+                            <th>Delete Order</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each=" order, state: ${orders}">
+                            <td>[[${state.index}]]</td>
+                            <td>[[${order.id}]]</td>
+                            <td>[[${order.createDate}]]</td>
+                            <td>[[${order.address}]]</td>
+                            <td>[[${order.status}]]</td>
+                            <td>
+                                <a class="btn btn-danger" th:if="${order.status.name() != 'DELETED'}"  th:href="@{|/order/status-update/${order.id}|}">DELETE</a>
+                            </td>
+                            <td>
+                                <a th:href="@{|/order/detail/${order.id}|}" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
+</html>

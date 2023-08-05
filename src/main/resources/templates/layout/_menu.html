@@ -1,0 +1,110 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-warning text-white  fixed-top p-0">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/product/list">
+      <img th:src="@{|/assets/images/logo.png|}" style="width: 80px; height: 60px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+			<a class="nav-link active" aria-current="page" th:href="@{/}"><b>Home</b></a>
+        </li>
+        <th:block th:if="${#request.remoteUser}">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/security/logoff}"><b>Sign Out</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/order/list}"><b>Your Orders</b></a>
+          </li>
+          <li class="nav-item" th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
+            <a class="nav-link" th:href="@{/assets/admin/index.html}"><b>Administration</b></a>
+          </li>
+        </th:block>
+        <th:block th:unless="${#request.remoteUser}">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/security/login/form}">Sign In</a>
+          </li>
+        </th:block>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" th:if="${#request.remoteUser}">
+        <a th:href="@{|/security/account/form/${#request.remoteUser}|}">
+        <li>
+          <img th:if="${session.userLogin != null}" th:src="@{|/assets/images/${session.userLogin.photo}|}"
+                  style="width: 35px; height: 35px" class="rounded-circle border boder-2 border-white" alt="Cinque Terre"> 
+        </li>
+        </a>
+        <li class="d-flex align-items-center text-primary" style="margin-left: 10px;">
+            <b >[[${#request.remoteUser}]]</b>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="header text-center border-bottom border-secondary border-5">
+  <div class="row">
+    <div class="col-sm-12">
+      <a href="/home"><img th:src="@{|/assets/images/banner.png|}" style="width: 100%; height: 400px;" alt=""></a>
+    </div>
+  </div>
+  <div class="carousel-run">
+    <div class="row bg-dark p-0">
+      <div class="col-sm-4 p-0 m-0">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="600">
+              <a href="#!viewTest/{{sj.Id}}"><img th:src="@{|/assets/images/carousel1.jpg|}"
+                  style="max-width: 100%; height: 180px" class="d-block w-100" alt="..."></a>
+            </div>
+            <div class="carousel-item" data-bs-interval="600">
+              <a href="#!viewTest/{{sj.Id}}"><img th:src="@{|/assets/images/Aug.png|}"
+                  style="max-width: 100%; height: 180px" class="d-block w-100" alt="..."></a>
+            </div>
+            <div class="carousel-item" data-bs-interval="600">
+              <a href="#!viewTest/{{sj.Id}}"><img th:src="@{|/assets/images/carousel4.jpg|}"
+                  style="max-width: 100%; height: 180px" class="d-block w-100" alt="..."></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 p-0 m-0">
+        <div id="carouselExampleInterval1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" data-bs-interval="600">
+              <img th:src="@{|/assets/images/carousel1.jpg|}" style="max-width: 100%; height: 180px"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active" data-bs-interval="600">
+              <img th:src="@{|/assets/images/Aug.png|}" style="max-width: 100%; height: 180px" class="d-block w-100"
+                alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="600">
+              <img th:src="@{|/assets/images/carousel4.jpg|}" style="max-width: 100%; height: 180px"
+                class="d-block w-100" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 p-0 m-0">
+        <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" data-bs-interval="600">
+              <img th:src="@{|/assets/images/carousel1.jpg|}" style="max-width: 100%; height: 180px"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="600">
+              <img th:src="@{|/assets/images/Aug.png|}" style="max-width: 100%; height: 180px" class="d-block w-100"
+                alt="...">
+            </div>
+            <div class="carousel-item active" data-bs-interval="600">
+              <img th:src="@{|/assets/images/carousel4.jpg|}" style="max-width: 100%; height: 180px"
+                class="d-block w-100" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

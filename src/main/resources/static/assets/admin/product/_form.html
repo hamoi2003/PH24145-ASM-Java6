@@ -1,0 +1,79 @@
+<div class="card">
+    <div class="card-header bg-success text-white">PRODUCT FORM</div>
+    <div class="card-body">
+        <div class="row">
+            <form name="formProduct">
+                <div class="col-sm-4 text-center">
+                    <label for="image">
+                        <img ng-src="/assets/images/{{form.image}}" style="width: 250px;height: 250px;" alt="">
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div>Name</div>
+                            <input ng-model="form.name" name="txtName" id="name" class="form-control" required>
+                            <!-- <div id="nameErr" class="text-danger"></div> -->
+                            <div ng-hide="formProduct.txtName.$valid || formProduct.txtName.$untouched" class="text-danger">Vui lòng điền tên sản phẩm!</div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div>Price</div>
+                            <input ng-model="form.price" id="price" name="txtPrice" class="form-control" required>
+                            <!-- <div id="priceErr" class="text-danger"></div> -->
+                            <div ng-hide="formProduct.txtPrice.$valid || formProduct.txtPrice.$untouched" class="text-danger">Vui lòng điền giá sản phẩm!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div>Image</div>
+                            <input type="file" id="image" name="txtImg" class="form-control"
+                            onchange="angular.element(this).scope().imageChanged(this.files)" required>
+                            <!-- <div id="imageErr" class="text-danger"></div> -->
+                            <!-- <div ng-hide="formProduct.txtImg.$valid || formProduct.txtImg.$untouched" class="text-danger">Vui lòng chọn ảnh sản phẩm!</div> -->
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div>Category</div>
+                            <select ng-model="form.category.id" name="txtCategory" class="form-control" required>
+                                <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+                            </select>
+                            <div ng-hide="formProduct.txtCategory.$valid || formProduct.txtCategory.$untouched" class="text-danger">Vui lòng chọn loại sản phẩm!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div>Create Date</div>
+                            <input ng-model="form.createDate" id="createDate" name="txtCreateDate" type="date" class="form-control" required>
+                            <!-- <div id="createDateErr" class="text-danger"></div> -->
+                            <div ng-hide="formProduct.txtCreateDate.$valid || formProduct.txtCreateDate.$untouched" class="text-danger">Vui lòng điền ngày tạo sản phẩm!</div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div>Available?</div>
+                            <div class="form-control">
+                                <label for="radio-inline">
+                                    <input ng-model="form.available" type="radio" ng-value="true" name="available">Yes
+                                </label>
+                                <label for="radio-inline">
+                                    <input ng-model="form.available" type="radio" ng-value="false" name="available">No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <button ng-click="create()" class="btn btn-primary">
+            <i class="bi bi-save-fill"></i> Create
+        </button>
+        <button ng-click="update()" class="btn btn-primary">
+            <i class="bi bi-gear-fill"></i> Update
+        </button>
+        <button ng-click="delete(form)" class="btn btn-primary">
+            <i class="bi bi-archive-fill"></i> Delete
+        </button>
+        <button ng-click="reset()" class="btn btn-primary">
+            <i class="bi bi-stars"></i> Reset
+        </button>
+    </div>
+</div>

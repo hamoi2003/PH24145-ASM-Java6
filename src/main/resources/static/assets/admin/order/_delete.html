@@ -1,0 +1,87 @@
+<main>
+    <div class="card border-primary">
+        <div class="card-header bg-primary text-white">
+            LIST ORDERS PENDING
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Order No.</th>
+                    <th>Order User</th>
+                    <th>Order Date</th>
+                    <th>Shipping Address</th>
+                    <th>Delete</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in deletes">
+                    <td></td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.account.username}}</td>
+                    <td>{{item.createDate|date:'dd-MM-yyyy'}}</td>
+                    <td>{{item.address}}</td>
+                    <td  class="bg-secondary text-center"><b>{{item.status}}</b></td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="order_detail(item.id)" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalDeleted"> <i class="bi bi-search"></i> </button>
+                        <button class="btn btn-primary" ng-click="delStatus(item.id)"><i class="bi bi-arrow-repeat"></i>RESTORE</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalDeleted" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="min-width: 650px;">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Order Information</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <main>
+                                            <div class="card border-primary mt-3">
+                                                <div class="card-header bg-primary text-white">
+                                                    ORDER LINES
+                                                </div>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Name</th>
+                                                            <th>Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Amount</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="item in orderDetails">
+                                                            <td>{{item.product.id}}</td>
+                                                            <td>{{item.product.name}}</td>
+                                                            <td>{{item.price}}</td>
+                                                            <td><input type="number" value="{{item.quantity}}"></td>
+                                                            <td>{{item.price}}</td>
+                                                            <td><button class="btn btn-danger"
+                                                                    ng-click="deleteProduct(item.id)">Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </main>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary"
+                                            ng-click="updateOrder(item.id)">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>

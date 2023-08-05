@@ -1,0 +1,14 @@
+<div class="card border-primary  p-0 mt-3">
+  <div class="card-header bg-primary text-center text-white" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+       aria-controls="collapseExample">
+
+    <i class="bi bi-list-stars"></i> <b>DANH MỤC</b>
+
+  </div>
+  <div class="card-body collapse p-0" id="collapseExample">
+    <ul class="list-group">
+      <a th:each=" c: ${cates}" th:href="@{|/product/list?cid=${c.id}|}" class="list-group-item hover">
+        [[${c.name}]]</a>
+    </ul>
+  </div>
+</div>
